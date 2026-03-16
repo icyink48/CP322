@@ -6,12 +6,11 @@ The dataset used in this study is the Adult (Census Income) dataset from the UCI
 
 ---
 
-This repository also contains the same abstract in `abstract.md`.
+## Project Information
 
-# Adult Income Classification Using Machine Learning
-
+Title Adult Income Classification Using Machine Learning  
 Dataset: Adult (Census Income), UCI Machine Learning Repository  
-Problem Type: Classification  
+Problem Type:Classification  
 Target Variable: income  
 
-See `abstract.md` for the submitted project abstract.
+This repository also contains the same abstract in `abstract.md`.
