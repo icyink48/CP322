@@ -39,5 +39,5 @@ def load_data(self) -> pd.DataFrame:
         """
         X = df.drop(columns=[target_column])
         y = df[target_column]
-        return X, y# data_loader.py
+        return X, y
   
