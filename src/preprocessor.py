@@ -2,6 +2,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
+from sklearn.impute import SimpleImputer
 
 
 class DataPreprocessor:
@@ -26,7 +27,9 @@ class DataPreprocessor:
     def build_preprocessor(self, X):
         """
         Build a preprocessing pipeline:
+        - impute missing numeric values with median
         - scale numeric features
+        - impute missing categorical values with most frequent
         - one-hot encode categorical features
         """
         numeric_features = X.select_dtypes(include=["int64", "float64"]).columns.tolist()
@@ -34,12 +37,14 @@ class DataPreprocessor:
 
         numeric_transformer = Pipeline(
             steps=[
+                ("imputer", SimpleImputer(strategy="median")),
                 ("scaler", StandardScaler())
             ]
         )
 
         categorical_transformer = Pipeline(
             steps=[
+                ("imputer", SimpleImputer(strategy="most_frequent")),
                 ("onehot", OneHotEncoder(handle_unknown="ignore"))
             ]
         )
