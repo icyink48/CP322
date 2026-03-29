@@ -1,1 +1,30 @@
-
+models = {
+    "DummyClassifier": Pipeline(
+        steps=[
+            ("preprocessor", preprocessor),
+            ("model", DummyClassifier(strategy="most_frequent"))
+        ]
+    ),
+    "LogisticRegression": Pipeline(
+        steps=[
+            ("preprocessor", preprocessor),
+            ("model", LogisticRegression(max_iter=1000, random_state=self.random_state))
+        ]
+    ),
+    "RandomForest": Pipeline(
+        steps=[
+            ("preprocessor", preprocessor),
+            ("model", RandomForestClassifier(
+                n_estimators=200,
+                random_state=self.random_state,
+                n_jobs=-1
+            ))
+        ]
+    ),
+    "LinearSVM": Pipeline(
+        steps=[
+            ("preprocessor", preprocessor),
+            ("model", LinearSVC(random_state=self.random_state, max_iter=5000))
+        ]
+    )
+}
