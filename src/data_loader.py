@@ -32,3 +32,11 @@ def clean_data(self, df: pd.DataFrame) -> pd.DataFrame:
         df.drop_duplicates(inplace=True)
 
         return df
+
+def get_features_and_target(self, df: pd.DataFrame, target_column: str = "income"):
+        """
+        Split the dataframe into features (X) and target (y).
+        """
+        X = df.drop(columns=[target_column])
+        y = df[target_column]
+        return X, y
