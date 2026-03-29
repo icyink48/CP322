@@ -8,6 +8,33 @@ from sklearn.model_selection import GridSearchCV
 
 
 class ModelTrainer:
+    def get_tuned_random_forest(self, preprocessor):
+    """
+    Return a GridSearchCV object for tuning Random Forest.
+    """
+    pipeline = Pipeline(
+        steps=[
+            ("preprocessor", preprocessor),
+            ("model", RandomForestClassifier(random_state=self.random_state, n_jobs=-1))
+        ]
+    )
+
+    param_grid = {
+        "model__n_estimators": [100, 200],
+        "model__max_depth": [None, 10, 20],
+        "model__min_samples_split": [2, 5],
+        "model__min_samples_leaf": [1, 2]
+    }
+
+    grid_search = GridSearchCV(
+        estimator=pipeline,
+        param_grid=param_grid,
+        cv=3,
+        scoring="accuracy",
+        n_jobs=-1
+    )
+
+    return grid_search
     def __init__(self, random_state: int = 42):
         self.random_state = random_state
 
