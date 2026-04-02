@@ -1,5 +1,9 @@
 # Adult Income Classification Using Machine Learning
 
+## Project Presentation Video
+
+Watch here: https://www.youtube.com/watch?v=IJ1hvXaALFc
+
 ## Project Information
 
 **Course:** CP322  
@@ -45,3 +49,5 @@ Expected dataset location:
 
 ```text
 data/raw/adult.csv
+
+
